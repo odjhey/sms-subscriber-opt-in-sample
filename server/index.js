@@ -4,7 +4,7 @@ const express = require("express");
 
 const { PORT, REDIS_PORT, REDIS_HOST } = process.env
 
-const client = redis.createClient( REDIS_PORT || "6379" );
+const client = redis.createClient( REDIS_PORT || "6379", REDIS_HOST );
 
 const app = express();
 
