@@ -26,7 +26,11 @@ app.get("/read/:subscriber_number", (req, res) => {
   const subscriber_number = req.params.subscriber_number;
   client.get(subscriber_number, (err, val) => {
     console.log("getAsync", subscriber_number, val);
-    res.send(val);
+    if(val){
+      res.send(val);
+    }else{
+      res.send('value not found')
+    }
   });
 });
 
