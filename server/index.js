@@ -1,6 +1,11 @@
+require('dotenv').config()
 const redis = require("redis");
-const client = redis.createClient();
 const express = require("express");
+
+const { PORT, REDIS_PORT } = process.env
+
+const client = redis.createClient( REDIS_PORT || "6379" );
+
 const app = express();
 
 client.on("connect", () => {
@@ -25,6 +30,6 @@ app.get("/read/:subscriber_number", (req, res) => {
   });
 });
 
-app.listen("3000", () => {
+app.listen(PORT || "3000", () => {
   console.log("app is online");
 });
